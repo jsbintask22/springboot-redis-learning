@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: 139.199.228.154
+    password: jsbintask

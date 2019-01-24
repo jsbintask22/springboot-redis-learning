@@ -16,8 +16,7 @@ public class RedisMessageReceiver {
     @Autowired
     private CountDownLatch countDownLatch;
 
-    public void
-            (String msg) {
+    public void receivedMsg(String msg) {
         log.info("received msg: " + msg);
         countDownLatch.countDown();
     }
