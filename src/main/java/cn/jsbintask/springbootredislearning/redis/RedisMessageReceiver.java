@@ -17,6 +17,7 @@ public class RedisMessageReceiver {
     private CountDownLatch countDownLatch;
 
     public void receivedMsg(String msg) {
+        // 收到消息后打印
         log.info("received msg: " + msg);
         countDownLatch.countDown();
     }

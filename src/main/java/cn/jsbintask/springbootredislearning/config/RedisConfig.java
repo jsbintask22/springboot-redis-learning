@@ -17,11 +17,16 @@ import java.util.concurrent.CountDownLatch;
  */
 @Configuration
 public class RedisConfig {
+    public static final String MSG_TOPIC = "chat";
+
     @Bean
     public CountDownLatch countDownLatch() {
         return new CountDownLatch(1);
     }
 
+    /**
+     * 消息消费者 适配器，其中 receivedMsg为定义的消费者的消费方法，必须保持一致
+     */
     @Bean
     MessageListenerAdapter listenerAdapter(RedisMessageReceiver receiver) {
         return new MessageListenerAdapter(receiver, "receivedMsg");
@@ -32,13 +37,16 @@ public class RedisConfig {
         return new StringRedisTemplate(connectionFactory);
     }
 
+    /**
+     * 消息监听容器，将适配器加入， 注意此处的 topic
+     */
     @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
                                             MessageListenerAdapter listenerAdapter) {
 
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic("chat"));
+        container.addMessageListener(listenerAdapter, new PatternTopic(MSG_TOPIC));
 
         return container;
     }
