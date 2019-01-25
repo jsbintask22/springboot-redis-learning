@@ -1,16 +1,4 @@
----
-title: springboot整合各种消息队列（一）：redis消息队列
-date: 2019-01-25 11:11
-updated: 2019-01-25 11:11
-tag: 
-  - springboot
-  - redis
-  - jms
-sourceId: springboot-redis-jms
----
-![cover](http://qiniu.jsbintask.cn/stream_of_autumn_by_leonidafremov-dcxtu6t.jpg)
-<!-- more -->
-本篇博客将介绍使用redis作为消息中间件和springboot的整合使用;
+本文将介绍使用redis作为消息中间件和springboot的整合使用;
 ## 安装配置redis
 请参考笔者另一篇博客，有详细介绍：[https://jsbintask.cn/2019/01/24/middleware/redis-install/#more](https://jsbintask.cn/2019/01/24/middleware/redis-install/#more)
 
